@@ -1,0 +1,23 @@
+.gradle/
+.idea/
+build/
+local.properties
+*.iml
+
+# Secrets and signing material
+*.jks
+*.keystore
+*.p12
+keystore.properties
+.env
+.env.*
+
+# Generated Android artifacts and local data
+*.apk
+*.aab
+*.db
+*.db-shm
+*.db-wal
+
+app/build/
+app/release/
