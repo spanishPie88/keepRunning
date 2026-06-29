@@ -1,4 +1,4 @@
-# Running
+# Running android run track app
 
 一款类似 Nike Run Club 的 Android 跑步应用原型工程。
 
@@ -56,17 +56,7 @@
 - `开始户外跑`：同时订阅系统可用的 `gps / fused / network / passive` provider；GPS 冷启动期间可先显示网络定位诊断，只有通过精度过滤的点才累计里程。
 - `调试：模拟跑步`：每秒注入一个模拟点，走同一套过滤、距离计算、通知栏刷新和 Room 落库链路。
 
-已在 `ATK-DLRK3568 - Android 13` 上验证：
-
-- 应用可安装并启动。
-- 首页可显示真跑前检查：定位权限、后台定位、电池优化放行。
-- 小屏竖屏下权限引导按钮使用纵向全宽布局，不挤压。
-- 前台服务可从 UI 正常启动。
-- 该设备没有 `gps` provider，实际可用 provider 为 `fused` / `passive`。
-- 定位实现已支持 provider 自动降级。
-- 模拟跑可正常累计距离、刷新通知栏并写入 Room。
-
-已在 `M9E1V2 - Android 9` GPS 真机上验证：
+已在真机上验证：
 
 - 首页可显示真跑前检查：定位权限已就绪、电池优化待开启。
 - UI 覆盖完整流程：开始户外跑、模拟跑步、暂停、继续、结束。
@@ -107,8 +97,8 @@ AMAP_API_KEY=你的高德AndroidKey
 .\gradlew.bat :app:assembleDebug
 .\gradlew.bat :app:installDebug
 
-& "D:\Software\AS\sdk\platform-tools\adb.exe" devices
-& "D:\Software\AS\sdk\platform-tools\adb.exe" -s <serial> logcat -d -t 300 | Select-String -Pattern "RunTrackingService|RunLocationProvider|RunSessionEngine"
+& "adb.exe" devices
+& "adb.exe" -s <serial> logcat -d -t 300 | Select-String -Pattern "RunTrackingService|RunLocationProvider|RunSessionEngine"
 ```
 
 ## 下一步
